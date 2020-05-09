@@ -1,0 +1,2 @@
+rootProject.name='Home practice'
+include ':app'

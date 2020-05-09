@@ -1,12 +1,9 @@
 package com.geekybeans.homepractice
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.activity.viewModels
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
 
 
 /** This is an home assignment that I created for practice **/
@@ -31,15 +28,16 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
 
+        /** check if after orientation change the second fragment is currently visible **/
         if (supportFragmentManager.findFragmentByTag("tag2") == null)
         {
             supportFragmentManager.beginTransaction().add(R.id.fragment_container, FirstFragment()).commit()
         }
     }
 
+    /** Example for using on saved instance state on configuration change **/
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle)
     {
         super.onSaveInstanceState(outState, outPersistentState)
@@ -50,7 +48,6 @@ class MainActivity : AppCompatActivity()
         super.onRestoreInstanceState(savedInstanceState)
         savedInstanceState.getString("key")
     }
-
 }
 
 
