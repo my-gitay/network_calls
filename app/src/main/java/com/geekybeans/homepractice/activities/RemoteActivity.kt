@@ -1,9 +1,12 @@
-package com.geekybeans.homepractice
+package com.geekybeans.homepractice.activities
 
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.geekybeans.homepractice.R
+import com.geekybeans.homepractice.fragments.FirstFragment
+import com.geekybeans.homepractice.viewmodels.RemoteViewModel
 
 
 /** This is an home assignment that I created for practice **/
@@ -20,20 +23,23 @@ import androidx.appcompat.app.AppCompatActivity
 //TODO: use Coroutines and LiveData
 //TODO: create a singleton
 
-class MainActivity : AppCompatActivity()
+class RemoteActivity : AppCompatActivity()
 {
-    private val viewModel: ActivityViewModel by viewModels()
+    private val viewModel: RemoteViewModel by viewModels()
     private val stringToShow = "Stringgg"
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_remote)
 
         /** check if after orientation change the second fragment is currently visible **/
         if (supportFragmentManager.findFragmentByTag("tag2") == null)
         {
-            supportFragmentManager.beginTransaction().add(R.id.fragment_container, FirstFragment()).commit()
+            supportFragmentManager.beginTransaction().add(
+                R.id.fragment_container,
+                FirstFragment()
+            ).commit()
         }
     }
 

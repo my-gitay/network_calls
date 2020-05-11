@@ -1,22 +1,24 @@
-package com.geekybeans.homepractice
+package com.geekybeans.homepractice.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.geekybeans.homepractice.DataApi
+import com.geekybeans.homepractice.models.RemoteDataEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class ActivityViewModel : ViewModel()
+class RemoteViewModel : ViewModel()
 {
-    var stringResponse = MutableLiveData<DataEntity>()
-    var listFromResponse = MutableLiveData<MutableList<DataEntity>>()
+    var stringResponse = MutableLiveData<RemoteDataEntity>()
+    var listFromResponse = MutableLiveData<MutableList<RemoteDataEntity>>()
 
     /** call retrofit to fetch data and put it in a list **/
     fun getDataFromService()
     {
-        var listResult: List<DataEntity> = listOf()
+        var listResult: List<RemoteDataEntity> = listOf()
 
         /** use view model build-in scope to use coroutine **/
         viewModelScope.launch {

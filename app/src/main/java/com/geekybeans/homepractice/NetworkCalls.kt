@@ -1,5 +1,6 @@
 package com.geekybeans.homepractice
 
+import com.geekybeans.homepractice.models.RemoteDataEntity
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -24,7 +25,7 @@ private val retrofit = Retrofit.Builder().addConverterFactory(MoshiConverterFact
 interface ApiService {
     /** the value in GET is the name of the json array **/
     @GET("realestate")
-    suspend fun getData(): List<DataEntity>
+    suspend fun getData(): List<RemoteDataEntity>
 }
 
 /** SINGLETON **/

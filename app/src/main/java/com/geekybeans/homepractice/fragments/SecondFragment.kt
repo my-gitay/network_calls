@@ -1,4 +1,4 @@
-package com.geekybeans.homepractice
+package com.geekybeans.homepractice.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,14 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.geekybeans.homepractice.R
+import com.geekybeans.homepractice.models.RemoteDataEntity
+import com.geekybeans.homepractice.adapters.RemoteItemsRecyclerAdapter
+import com.geekybeans.homepractice.viewmodels.RemoteViewModel
 import kotlinx.android.synthetic.main.fragment_second.*
 
 
 class SecondFragment : Fragment()
 {
     /** get the activity's view model (use the same view model for activity and both fragments) **/
-    private val viewModel: ActivityViewModel by activityViewModels()
-    private var itemList: MutableList<DataEntity> = mutableListOf()
+    private val viewModel: RemoteViewModel by activityViewModels()
+    private var itemList: MutableList<RemoteDataEntity> = mutableListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -27,7 +31,10 @@ class SecondFragment : Fragment()
         super.onActivityCreated(savedInstanceState)
         /** set recycler view **/
         sec_fragment_recycler.apply {
-            adapter = ItemsRecyclerAdapter(itemList)
+            adapter =
+                RemoteItemsRecyclerAdapter(
+                    itemList
+                )
             layoutManager = LinearLayoutManager(requireContext())
         }
 
